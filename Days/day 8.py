@@ -102,5 +102,3 @@ def prime_catcher (num):
             return "prime"
     
 bot = prime_catcher (number)
-
-        
