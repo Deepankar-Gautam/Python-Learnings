@@ -19,24 +19,24 @@ function (something)   # calling the function
 ===============================================
 '''
 
-def greet():
-    print("Greetings Rover")
+# def greet():
+#     print("Greetings Rover")
 
-greet()
+# greet()
 
-def greetings(name):
-    print(f"Greetings {name}")
+# def greetings(name):
+#     print(f"Greetings {name}")
 
-greetings ("Rover")
+# greetings ("Rover")
 
 
-def greet_with(name, location):
-    print (f"Hey {name}")
-    print (f"What is it like to be in {location}")
+# def greet_with(name, location):
+#     print (f"Hey {name}")
+#     print (f"What is it like to be in {location}")
 
-greet_with("Rover", "Black Shores")    #  positional arguments
+# greet_with("Rover", "Black Shores")    #  positional arguments
 
-greet_with(location = "Black Shores", name = "Rover")    #  keyword arguments
+# greet_with(location = "Black Shores", name = "Rover")    #  keyword arguments
 
 
 '''==================================
@@ -57,7 +57,6 @@ painting wall, required cans of paint
 
 # print (f"You required total of {cans} cans")
 
-
 '''=================
 prime number checker
 =================='''
@@ -68,7 +67,7 @@ prime number checker
 #     if alpha <= 1:
 #         return "not prime"
     
-#     for n in range (2, alpha - 1):
+#     for n in range (2, int(alpha ** 0.5) + 1):
 #         if alpha % n == 0:
 #             return "not prime"
 
@@ -83,22 +82,31 @@ prime number checker but with lists
 ================================='''
 
 number = list (range (1, 1001))
-prime_numbers = []
-
+prime_number = []
+waste = []
 
 def prime_catcher (num):
-    for element in number:
-        if element <= 1:
-            element += 1
-            return "not prime"
+    if num <= 1:
+        waste.append(num)
+        return False
+
+    for i in range (2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            waste.append(num)
+            return False
         
-        elif element % num == 0:
-            element += 1
-            return "not prime"
-        
-        elif element % num != 0:
-            prime_numbers.append(element)
-            element += 1
-            return "prime"
-    
-bot = prime_catcher (number)
+    prime_number.append(num)
+    return True
+
+for element in number:
+    object = prime_catcher (element)
+
+print (f"""According to the list you have provided, there are
+Prime numbers : {len(prime_number)}
+Composit numers : {len(waste)}""")
+
+want = int(input ("Tell the amount of first prime number you want : "))
+if want > len(prime_number):
+    print ("Your want is greater than the actual number")
+else:
+    print (prime_number[0 : want])
