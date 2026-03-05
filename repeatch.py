@@ -12,4 +12,4 @@ print (dict)
 for i in dict:
     a = dict[i])
 
-print (f"Repeating Characters Found : ")
+print (f"Repeating Characters Found : ")  
