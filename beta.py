@@ -57,3 +57,25 @@ for ch in dictionary:
 if found == False:
     print (f"Your password has no repeating characters, great job")
 
+# -------------------------------------------------------------------------------------
+
+# Problem 2 : Is the daily step goal reached ?
+
+steps_list = input ('Enter you daily steps throughout the time with ", " : ').split(", ")
+step_goal = int(input ("Enter your step goal : "))
+goal_achieved = 0
+negative_steps = False
+
+for steps in (len(steps_list)):
+    if int(steps_list[steps]) < 0:
+        negative_steps = True
+        print ("Invalid steps")
+        break
+
+if negative_steps == False:
+    for steps in range (0, len(steps_list)):
+        if int(steps_list[steps]) >= step_goal:
+            goal_achieved += 1
+
+print (f"Days goal achieved : {goal_achieved}")
+
