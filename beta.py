@@ -33,3 +33,27 @@ if len (occurrence_list) == 0:
 else:
     print (f"Your password has following repeating characters : {", ".join(occurrence_list)}" )
 
+# -------------------------------------------------------------------------------------
+
+Method 2
+
+password = input("Enter your password : ")
+
+dictionary = {}
+found = False
+
+for ch in password:
+    if ch in dictionary:
+        dictionary[ch] += 1
+    else:
+        dictionary[ch] = 1
+
+print("Your password has following repeating characters : ", end=" ")
+for ch in dictionary:
+    if dictionary[ch] > 1:
+        print (ch, end = ", ")
+        found = True
+
+if found == False:
+    print (f"Your password has no repeating characters, great job")
+
