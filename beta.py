@@ -1,19 +1,3 @@
-#problem 1, find repeaitng characters in password
-# psuedo code
-
-password = ("passwordpassword")
-empty_list = []
-occurance_list = [] 
-
-for ch in password:
-    if ch in empty_list:
-        occurance_list.append(ch) 
-    else:
-        empty_list.append(ch)
-
-print (f"repeated characters : {occurance_list}")
-# ----------------------------------------------------------------------------
-
 # Problem 1 : Does password contains any repeating character(s)?
 # Method 1
 
@@ -35,24 +19,26 @@ else:
 
 # -------------------------------------------------------------------------------------
 
-Method 2
+# Method 2
 
 password = input("Enter your password : ")
 
 dictionary = {}
+repeated = "".split(",")
 found = False
 
-for ch in password:
+for ch in range (len(password)):
     if ch in dictionary:
         dictionary[ch] += 1
     else:
         dictionary[ch] = 1
 
-print("Your password has following repeating characters : ", end=" ")
 for ch in dictionary:
     if dictionary[ch] > 1:
-        print (ch, end = ", ")
         found = True
+        repeated = repeated + dictionary[ch] + ","
+
+print(f"Your password has following repeating characters : {repeated}")
 
 if found == False:
     print (f"Your password has no repeating characters, great job")
@@ -61,21 +47,24 @@ if found == False:
 
 # Problem 2 : Is the daily step goal reached ?
 
-steps_list = input ('Enter you daily steps throughout the time with ", " : ').split(", ")
-step_goal = int(input ("Enter your step goal : "))
 goal_achieved = 0
 negative_steps = False
 
-for steps in (len(steps_list)):
+steps_list = input ('Enter you daily steps throughout the time with ", " : ').split(", ")
+
+for steps in range(len(steps_list)):
     if int(steps_list[steps]) < 0:
         negative_steps = True
         print ("Invalid steps")
-        break
+        exit(0)
+    else: 
+        continue
 
 if negative_steps == False:
-    for steps in range (0, len(steps_list)):
+    step_goal = int(input ("Enter your step goal : "))
+    for steps in range (len(steps_list)):
         if int(steps_list[steps]) >= step_goal:
             goal_achieved += 1
-
-print (f"Days goal achieved : {goal_achieved}")
+                
+print (f"Days goal achieved : {goal_achieved}")            
 
